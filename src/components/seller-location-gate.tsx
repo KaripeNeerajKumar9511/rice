@@ -135,13 +135,12 @@ export function SellerLocationGate() {
     }
     setBusy(true);
     try {
-      // Generated Supabase Database types are not configured, so RPC arguments otherwise infer as never.
       const {error: saveError} = await supabase.rpc('upsert_my_seller_location', {
         p_state_code: form.state_code,
         p_district: form.district.trim(),
         p_mandal: form.mandal.trim(),
         p_village: form.village.trim(),
-      } as never);
+      });
       if (saveError) {
         setError(saveError.message);
         return;
