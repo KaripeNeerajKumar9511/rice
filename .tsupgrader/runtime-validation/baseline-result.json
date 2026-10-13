@@ -1,0 +1,18 @@
+{
+  "planHash": "1d39b8559917ba42c43db3de6688a3324c833b148614e87d3fd3794b1d030f1b",
+  "phase": "baseline",
+  "recordedAtUtc": "2026-10-13T15:22:25.8303746Z",
+  "retryCount": 0,
+  "resetBaseline": true,
+  "complete": false,
+  "runningStep": "production-build",
+  "partialOutput": "\r\n\u003E rice-dhanyam-marketplace@1.0.0 build\r\n\u003E next build\r\n\r\n   \u25B2 Next.js 15.5.4\r\n   - Environments: .env.local\r\n\r\n   Creating an optimized production build ...\r\n \u2713 Compiled successfully in 53s\r\n   Linting and checking validity of types ...\r\n   Collecting page data ...\r\n   Generating static pages (0/10) ...\r\n   Generating static pages (2/10) \r\n   Generating static pages (4/10) \r\n   Generating static pages (7/10) \r\n \u2713 Generating static pages (10/10)\r\n   Finalizing page optimization ...\r\n   Collecting build traces ...\r\n",
+  "cleanupCompleted": true,
+  "result": {
+    "setupSucceeded": false,
+    "setupDurationMs": 0,
+    "setupFailureOutput": null,
+    "assertions": [],
+    "executions": []
+  }
+}
