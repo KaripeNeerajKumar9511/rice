@@ -1,0 +1,4 @@
+import type {Metadata,Viewport} from 'next';import './globals.css';import {SiteShell} from '@/components/site-shell';
+export const metadata:Metadata={title:{default:'RICE — Dhanyam | Local Rice Marketplace',template:'%s · RICE Dhanyam'},description:'Discover rice varieties from farmers and retailers across Telangana and Andhra Pradesh. Send an enquiry and get a callback from the seller.',applicationName:'RICE Dhanyam',manifest:'/manifest.json',icons:{icon:'/icon.svg'},openGraph:{title:'RICE — Dhanyam',description:'Good rice. Nearby growers. A simpler way to buy.',type:'website'}};
+export const viewport:Viewport={themeColor:'#365c2d',width:'device-width',initialScale:1,viewportFit:'cover'};
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body><SiteShell>{children}</SiteShell></body></html>}
