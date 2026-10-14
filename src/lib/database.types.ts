@@ -26,6 +26,7 @@ type Profile = {
   id: string;
   role: Database['public']['Enums']['seller_role'];
   full_name: string;
+  email: string | null;
   phone: string | null;
   preferred_language: string;
   account_status: string;
@@ -133,6 +134,16 @@ type AuditLog = {
   created_at: string;
 };
 
+type AdminNotification = {
+  id: string;
+  seller_id: string;
+  listing_id: string | null;
+  listing_title: string;
+  note: string;
+  created_by: string | null;
+  created_at: string;
+};
+
 type PublicListing = Omit<RiceListing, 'updated_at'> & {
   seller_name: string;
   seller_role: Database['public']['Enums']['seller_role'];
@@ -171,7 +182,8 @@ type AdminReportView = Pick<Report, 'id' | 'listing_id' | 'reason' | 'details' |
 export type Database = {
   public: {
     Tables: {
-      profiles: Table<Profile, Omit<Profile, 'created_at' | 'updated_at' | 'account_status'> & {
+      profiles: Table<Profile, Omit<Profile, 'email' | 'created_at' | 'updated_at' | 'account_status'> & {
+        email?: string | null;
         created_at?: string;
         updated_at?: string;
         account_status?: string;
@@ -252,6 +264,15 @@ export type Database = {
         },
         Partial<Report>
       >;
+      admin_notifications: Table<
+        AdminNotification,
+        Omit<AdminNotification, 'id' | 'listing_id' | 'created_at'> & {
+          id?: string;
+          listing_id?: string | null;
+          created_at?: string;
+        },
+        Partial<AdminNotification>
+      >;
       audit_logs: Table<
         AuditLog,
         Omit<AuditLog, 'id' | 'actor_id' | 'target_id' | 'reason' | 'metadata' | 'created_at'> & {
@@ -290,6 +311,14 @@ export type Database = {
       upsert_my_seller_location: {
         Args: {p_state_code: string; p_district: string; p_mandal: string; p_village: string};
         Returns: string;
+      };
+      admin_archive_listing: {
+        Args: {p_listing_id: string; p_note: string};
+        Returns: string;
+      };
+      admin_get_visitor_analytics: {
+        Args: {p_days: number};
+        Returns: {visit_date: string; unique_visitors: number; page_views: number}[];
       };
     };
     Enums: {
